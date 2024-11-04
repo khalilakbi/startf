@@ -32,10 +32,12 @@ public class ExtendReport implements ITestListener {
         sparkReporter.config().setReportName(" Functional Testing"); // name of the report
         sparkReporter.config().setTheme(Theme.DARK);
 
+
         extent = new ExtentReports();
         extent.attachReporter(sparkReporter);
         extent.setSystemInfo("Application", "com.orange HRM");
         extent.setSystemInfo("Operating System", System.getProperty("os.name"));
+
 
         //extent.setSystemInfo("Tester name", "khalil");
     }
@@ -51,7 +53,7 @@ public class ExtendReport implements ITestListener {
         test.log(Status.FAIL, result.getThrowable().getMessage());
 
         try {
-            String screenshotPath = System.getProperty("user.dir") + File.separator + "screenshot" +File.separator +   result.getName() + ".png";
+            String screenshotPath = System.getProperty("user.dir") + File.separator + "screenshot" + File.separator + result.getName() + ".png";
             test.addScreenCaptureFromPath(screenshotPath);
         } catch (Exception e) {
             e.printStackTrace();
